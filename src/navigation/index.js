@@ -1,7 +1,7 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Login, Splash} from '@screens/index';
+import {Home, Splash} from '@screens/index';
 import {useAppSelector} from '@hooks/useRedux';
 import {useSelector} from 'react-redux';
 import LoadingPage from '@screens/LoadingPage/LoadingPage';
@@ -17,7 +17,7 @@ export default function Navigation() {
         initialRouteName="Splash"
         screenOptions={{headerShown: false}}>
         <MainStack.Screen name="Splash" component={Splash} />
-        <MainStack.Screen name="Login" component={Login} />
+        <MainStack.Screen name="Home" component={Home} />
       </MainStack.Navigator>
       {loading && <LoadingPage />}
     </>

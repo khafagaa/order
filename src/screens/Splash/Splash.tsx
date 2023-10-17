@@ -36,7 +36,7 @@ const Splash: FC = () => {
   }, [startBounceAnimation]);
   useEffect(() => {
     const id = setTimeout(() => {
-      navigation.dispatch(StackActions.replace('Login'));
+      navigation.dispatch(StackActions.replace('Home'));
     }, 2000);
 
     return () => {

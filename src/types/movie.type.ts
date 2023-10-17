@@ -8,8 +8,7 @@ export type movieType = {
 export type HistoryState = {
   history: movieType[];
 };
-
-export type recievedData = {
+export type movieInfo = {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -24,4 +23,9 @@ export type recievedData = {
   video: boolean;
   vote_average: number;
   vote_count: number;
+};
+
+export type recievedData = {
+  page: number;
+  results: movieInfo[];
 };

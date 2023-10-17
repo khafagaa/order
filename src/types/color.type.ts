@@ -4,3 +4,8 @@ export type colors = {
   dimmed: string;
   blue: string;
 };
+
+export type themeType = {
+  theme: string;
+  changeTheme: () => void;
+};

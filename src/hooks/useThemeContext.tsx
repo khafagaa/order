@@ -1,9 +1,17 @@
 import {useColorScheme} from 'react-native';
+import {themeType} from 'src/types/color.type';
+import React, {PureComponent, createContext, useState} from 'react';
 
-const {createContext, useState} = require('react');
+interface Theme {
+  color: string;
+  background: string;
+}
 
-export const ThemeContext = createContext();
-const UseThemeContext = props => {
+export const ThemeContext = createContext<themeType>({
+  theme: '',
+  changeTheme: () => {},
+});
+const UseThemeContext = (props: any) => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const [theme, setTheme] = useState(isDarkMode ? 'dark' : 'light');
