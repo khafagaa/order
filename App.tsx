@@ -7,7 +7,6 @@ import {Login, Splash} from '@screens/index';
 
 import ProvidersWrapper from '@providers/ProvidersWrapper';
 import UseThemeContext from '@hooks/useThemeContext';
-// import Navigation from './src/navigation';
 import Navigation from '@navigation/index';
 
 function App(): JSX.Element {
