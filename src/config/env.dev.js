@@ -1,4 +1,4 @@
 module.exports = {
-  BASE_URL: 'http',
+  BASE_URL: 'https://',
   ENV: 'dev',
 };
