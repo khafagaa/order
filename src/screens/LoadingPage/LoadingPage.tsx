@@ -11,6 +11,9 @@ export default function LoadingPage() {
         height: '100%',
         alignItems: 'center',
         justifyContent: 'center',
+        opacity: 0.5,
+        position: 'absolute',
+        zIndex: 1000,
       }}>
       {<ActivityIndicator size="large" color={getColor().blue} />}
     </View>
