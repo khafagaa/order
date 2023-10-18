@@ -6,8 +6,10 @@ export const light: colors = {
   txt: '#000',
   dimmed: '#718093',
   blue: '#fbc531',
-  darkBlue: '#192a56',
+  darkBlue: '#487eb0',
   dark: '#000',
+  shadow: '#000',
+  card: '#192a56',
 };
 export const dark: colors = {
   primary: '#000',
@@ -15,6 +17,8 @@ export const dark: colors = {
   txt: '#fff',
   dimmed: '#718093',
   blue: '#fbc531',
-  darkBlue: '#487eb0',
+  darkBlue: '#192a56',
   dark: '#000',
+  shadow: '#fff',
+  card: '#487eb0',
 };

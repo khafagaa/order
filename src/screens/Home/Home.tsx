@@ -12,58 +12,27 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import Octicons from 'react-native-vector-icons/Octicons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './Home.styles';
+import ThemeToggle from '@components/atoms/ThemeToggle';
+import Card from '@components/molecules/Card/Card';
 
 const Login = () => {
   const {theme, changeTheme} = useContext(ThemeContext);
-  const [toggleValue, setToggle] = useState(false);
-  const loading = useAppSelector(state => state.loading.loading);
-  const dispatch = useAppDispatch();
+  const [toggleValue, setToggle] = useState(true);
+  const loading = useAppSelector(
+    (state: {loading: {loading: boolean}}) => state.loading.loading,
+  );
   const {data, isFetching, isLoading} = useGetMovies();
-  const changeThem = () => {
-    setToggle(!toggleValue);
-    changeTheme();
-    // dispatch(accessLoading(!loading));
-  };
+
   return (
-    <SafeAreaView style={styles(getColor()).check}>
+    <SafeAreaView style={styles(getColor()).container}>
+      {(isLoading || isFetching) && <LoadingPage />}
       <View
-        style={{flexDirection: 'row-reverse', justifyContent: 'space-between'}}>
-        <View
-          style={{
-            alignSelf: 'flex-start',
-            flexDirection: 'row',
-            borderRadius: 20,
-            shadowRadius: 20,
-            borderColor: 'white',
-            justifyContent: 'space-between',
-          }}>
-          <Entypo
-            name="moon"
-            size={35}
-            color={theme == 'dark' ? getColor().blue : getColor().dimmed}
-            onPress={() => console.log('press')}
-            style={{
-              backgroundColor: getColor().white,
-              borderRadius: 5,
-            }}
-          />
-          <Switch
-            value={toggleValue}
-            onChange={changeThem}
-            thumbColor={getColor().primary}
-            style={{marginHorizontal: 7}}
-          />
-          <Entypo
-            name="light-up"
-            size={35}
-            color={theme == 'light' ? getColor().blue : getColor().dimmed}
-            style={{
-              backgroundColor: getColor().white,
-              borderRadius: 5,
-            }}
-            onPress={() => console.log('press')}
-          />
-        </View>
+        style={{
+          flexDirection: 'row-reverse',
+          justifyContent: 'space-between',
+          marginTop: 10,
+        }}>
+        <ThemeToggle />
         <View>
           <Octicons
             name="history"
@@ -76,11 +45,8 @@ const Login = () => {
         </View>
       </View>
 
-      <Button
-        color={getColor().txt}
-        title="view history"
-        onPress={changeThem}></Button>
-      {(isLoading || isFetching) && <LoadingPage />}
+      <View style={styles(getColor()).line} />
+      <Card results={data?.results} />
     </SafeAreaView>
   );
 };

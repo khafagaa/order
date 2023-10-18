@@ -1,4 +1,3 @@
-import getColor from '@theme/getColor';
 import {StyleSheet} from 'react-native';
 import {colors} from 'src/types/color.type';
 
@@ -10,16 +9,16 @@ const styles = (color: colors) =>
       alignItems: 'center',
     },
     container: {
-      backgroundColor: color.darkBlue,
-      flex: 1,
+      alignSelf: 'flex-start',
+      flexDirection: 'row',
+      borderRadius: 20,
+      shadowRadius: 20,
+      borderColor: color.white,
+      justifyContent: 'space-between',
     },
-    line: {
-      margin: 5,
-      alignSelf: 'center',
-      width: '95%',
-      borderWidth: 1,
-      elevation: 4,
-      shadowColor: 'white',
+    icon: {
+      backgroundColor: color.white,
+      borderRadius: 5,
     },
   });
 

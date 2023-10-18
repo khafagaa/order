@@ -25,6 +25,7 @@ module.exports = {
           '@hooks': './src/hooks',
           '@shared': './src/shared',
           '@components': './src/components',
+          '@utils': './src/utils',
           // '@src/*': ['./src/*'],
         },
       },

@@ -21,7 +21,6 @@ const Star: FC<props> = ({rate}) => {
           </View>
         );
       })}
-      <Text>Star</Text>
     </View>
   );
 };

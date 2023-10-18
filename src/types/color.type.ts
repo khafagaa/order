@@ -6,6 +6,8 @@ export type colors = {
   blue: string;
   darkBlue: string;
   dark: string;
+  shadow: string;
+  card: string;
 };
 
 export type themeType = {
