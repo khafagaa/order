@@ -2,11 +2,6 @@ import {useColorScheme} from 'react-native';
 import {themeType} from 'src/types/color.type';
 import React, {PureComponent, createContext, useState} from 'react';
 
-interface Theme {
-  color: string;
-  background: string;
-}
-
 export const ThemeContext = createContext<themeType>({
   theme: '',
   changeTheme: () => {},

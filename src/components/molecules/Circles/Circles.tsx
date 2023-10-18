@@ -1,6 +1,7 @@
 import {View, ViewStyle} from 'react-native';
 import React, {FC} from 'react';
 import styles from './Circles.styles';
+import getColor from '@theme/getColor';
 const Circles: FC<{style: ViewStyle; count: number}> = ({
   style,
   count,
@@ -14,7 +15,7 @@ const Circles: FC<{style: ViewStyle; count: number}> = ({
         <View
           key={index}
           style={[
-            styles.circle,
+            styles(getColor()).circle,
             {
               width: 100 * (index + 1),
               height: 100 * (index + 1),
