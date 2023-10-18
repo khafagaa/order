@@ -19,6 +19,7 @@ const styles = (color: colors) =>
     icon: {
       backgroundColor: color.white,
       borderRadius: 5,
+      overflow: 'hidden',
     },
   });
 
