@@ -2,13 +2,9 @@ import {View, ViewStyle} from 'react-native';
 import React, {FC} from 'react';
 import styles from './Circles.styles';
 import getColor from '@theme/getColor';
-const Circles: FC<{style: ViewStyle; count: number}> = ({
-  style,
-  count,
-}: {
-  style: ViewStyle;
-  count: number;
-}) => {
+
+type props = {style: ViewStyle; count: number};
+const Circles: FC<props> = ({style, count}) => {
   return (
     <View style={style}>
       {new Array(count).fill(1).map((_, index) => (
