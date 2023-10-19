@@ -6,7 +6,6 @@ const loadingSlice = createSlice({
   },
   reducers: {
     accessLoading: (state, action) => {
-      console.log(`eh da ${action.payload}`);
       state.loading = action.payload;
     },
   },

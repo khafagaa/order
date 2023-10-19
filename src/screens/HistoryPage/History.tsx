@@ -14,7 +14,6 @@ const History: FC = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const movie = useAppSelector(state => state.history.history);
-  console.log('eh ', movie.length);
   const color = getColor();
   const removeHistory = () => dispatch(removeAllHistory());
   return (

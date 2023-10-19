@@ -11,10 +11,6 @@ import FastImage from 'react-native-fast-image';
 const Details: FC<DetailsRouteProp> = ({navigation, route}) => {
   const color = getColor();
   const {movie} = route?.params;
-  const BackgroundUri = imagePath + movie.poster_path;
-  const ImagUri = imagePath + movie.backdrop_path;
-  console.log(`came :${JSON.stringify(`${BackgroundUri}`)}`);
-  console.log(`came :${JSON.stringify(`${ImagUri}`)}`);
   return (
     <ScrollView style={styles(color).container}>
       <SafeAreaView>
