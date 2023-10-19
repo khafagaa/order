@@ -3,7 +3,13 @@
 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
-## Step 1: Start the Metro Server
+# Step 1: Install dependencies 
+1 => first run  => ( yarn ) or ( npm install )
+
+if your operating sys is ios so run  => ( cd ios && pod install )
+
+
+# Step 2: Start the Metro Server
 
 First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
 
