@@ -18,7 +18,7 @@ const ThemeToggle: FC = () => {
     <View style={styles(getColor()).container}>
       <Entypo
         name="moon"
-        size={35}
+        size={30}
         color={theme == 'dark' ? getColor().blue : getColor().dimmed}
         onPress={changeThem}
         style={styles(getColor()).icon}
@@ -31,7 +31,7 @@ const ThemeToggle: FC = () => {
       />
       <Entypo
         name="light-up"
-        size={35}
+        size={30}
         color={theme == 'light' ? getColor().blue : getColor().dimmed}
         style={styles(getColor()).icon}
         onPress={changeThem}

@@ -7,7 +7,7 @@ import {
   calcHeight,
   calcWidth,
   screenWidth,
-} from '../../../utils/responsive-helper.service';
+} from '@utils/responsive-helper.service';
 const styles = (color: colors) =>
   StyleSheet.create({
     container: {

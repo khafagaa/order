@@ -1,27 +1,28 @@
-import {View, SafeAreaView, Button, Image, Switch, Text} from 'react-native';
+import {View, SafeAreaView, Text} from 'react-native';
 import React, {useContext, useState} from 'react';
 import {ThemeContext} from '@hooks/useThemeContext';
 import getColor from '@theme/getColor';
-import Splash from '@screens/Splash/Splash';
 import {useAppDispatch, useAppSelector} from '@hooks/useRedux';
-import {accessLoading} from '@redux/Loading/loading.reducer';
 import LoadingPage from '@screens/LoadingPage/LoadingPage';
 import {useGetMovies} from '@hooks/useGetMovies';
-import imagePath from '@constants/imagePath';
-import Entypo from 'react-native-vector-icons/Entypo';
 import Octicons from 'react-native-vector-icons/Octicons';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './Home.styles';
 import ThemeToggle from '@components/atoms/ThemeToggle';
 import Card from '@components/molecules/Card/Card';
-
+import {movieInfo, movieType} from 'src/types/movie.type';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamList} from 'src/types/navigation.type';
+import {addHistory} from '@redux/Historymovies/history.reducer';
 const Login = () => {
-  const {theme, changeTheme} = useContext(ThemeContext);
-  const [toggleValue, setToggle] = useState(true);
-  const loading = useAppSelector(
-    (state: {loading: {loading: boolean}}) => state.loading.loading,
-  );
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const dispatch = useAppDispatch();
   const {data, isFetching, isLoading} = useGetMovies();
+  const pressMovie = (item: movieInfo) => {
+    dispatch(addHistory(item));
+    navigation.navigate('Details', {movie: item});
+  };
 
   return (
     <SafeAreaView style={styles(getColor()).container}>
@@ -36,9 +37,9 @@ const Login = () => {
         <View>
           <Octicons
             name="history"
-            size={35}
+            size={30}
             color={getColor().white}
-            onPress={() => console.log('press')}
+            onPress={() => navigation.navigate('History')}
             style={{alignSelf: 'center'}}
           />
           <Text style={{color: getColor().white}}>View History</Text>
@@ -46,7 +47,7 @@ const Login = () => {
       </View>
 
       <View style={styles(getColor()).line} />
-      <Card results={data?.results} />
+      <Card results={data?.results} pressMovie={pressMovie} />
     </SafeAreaView>
   );
 };

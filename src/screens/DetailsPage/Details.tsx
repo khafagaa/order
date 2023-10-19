@@ -1,10 +1,50 @@
-import {View, Text} from 'react-native';
-import React from 'react';
+import {View, Text, ScrollView} from 'react-native';
+import React, {FC} from 'react';
+import {DetailsRouteProp} from 'src/types/navigation.type';
+import imagePath from '@constants/imagePath';
+import getColor from '@theme/getColor';
+import styles from './Details.styles';
+import Star from '@components/atoms/Star';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import FastImage from 'react-native-fast-image';
 
-export default function Details() {
+const Details: FC<DetailsRouteProp> = ({navigation, route}) => {
+  const color = getColor();
+  const {movie} = route?.params;
+  const BackgroundUri = imagePath + movie.poster_path;
+  const ImagUri = imagePath + movie.backdrop_path;
+  console.log(`came :${JSON.stringify(`${BackgroundUri}`)}`);
+  console.log(`came :${JSON.stringify(`${ImagUri}`)}`);
   return (
-    <View>
-      <Text>Details</Text>
-    </View>
+    <ScrollView style={styles(color).container}>
+      <FastImage
+        style={styles(color).imgContainer}
+        resizeMode="stretch"
+        source={{
+          uri: `${imagePath}${movie?.poster_path}`,
+        }}>
+        <Ionicons
+          name="caret-back"
+          size={35}
+          color={getColor().darkBlue}
+          onPress={() => navigation.goBack()}
+          style={styles(color).icn}
+        />
+        <FastImage
+          style={styles(color).img}
+          source={{
+            uri: `${imagePath}${movie?.backdrop_path}`,
+          }}
+        />
+      </FastImage>
+      <Text style={styles(color).titleTxt}>
+        {`${movie.original_title}  (${movie.release_date?.split('-')?.[0]})`}
+      </Text>
+      <Star style={styles(color).star} rate={movie.vote_average} />
+      <Text style={styles(color).overTxt}>{`Overview`}</Text>
+      <Text style={styles(color).titleoverView}>{`${movie.overview} `}</Text>
+    </ScrollView>
   );
-}
+};
+
+export default Details;

@@ -10,6 +10,7 @@ export const light: colors = {
   dark: '#000',
   shadow: '#000',
   card: '#192a56',
+  green: '#00cec9',
 };
 export const dark: colors = {
   primary: '#000',
@@ -21,4 +22,5 @@ export const dark: colors = {
   dark: '#000',
   shadow: '#fff',
   card: '#487eb0',
+  green: '#00b894',
 };

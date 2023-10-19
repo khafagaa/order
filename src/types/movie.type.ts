@@ -6,7 +6,7 @@ export type movieType = {
 };
 
 export type HistoryState = {
-  history: movieType[];
+  history: movieInfo[];
 };
 export type movieInfo = {
   adult: boolean;

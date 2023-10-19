@@ -11,14 +11,19 @@ import {card, cardInfo} from 'src/types/card.type';
 import styles from './Card.styles';
 import getColor from '@theme/getColor';
 import imagePath from '@constants/imagePath';
-import {calcWidth} from '../../../utils/responsive-helper.service';
 import Star from '@components/atoms/Star';
+import {movieInfo} from 'src/types/movie.type';
 
-const Card: FC<{results: card}> = ({results}) => {
+const Card: FC<{results: card; pressMovie: (item: movieInfo) => void}> = ({
+  results,
+  pressMovie,
+}) => {
   let color = getColor();
-  const RenderItem: ListRenderItem<cardInfo> = ({item}) => {
+  const RenderItem: ListRenderItem<movieInfo> = ({item}) => {
     return (
-      <TouchableOpacity style={styles(color).container}>
+      <TouchableOpacity
+        style={styles(color).container}
+        onPress={() => pressMovie(item)}>
         <View style={{flexDirection: 'row'}}>
           <Image
             style={styles(color).img}
@@ -37,7 +42,10 @@ const Card: FC<{results: card}> = ({results}) => {
             <Text numberOfLines={2} style={styles(color).txt2}>
               {`release : ${item?.release_date}`}
             </Text>
-            <Star rate={item?.vote_average} />
+            <Star
+              rate={item?.vote_average}
+              style={{justifyContent: 'space-evenly'}}
+            />
           </View>
         </View>
       </TouchableOpacity>
