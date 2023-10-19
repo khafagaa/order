@@ -1,4 +1,4 @@
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text, ScrollView, SafeAreaView} from 'react-native';
 import React, {FC} from 'react';
 import {DetailsRouteProp} from 'src/types/navigation.type';
 import imagePath from '@constants/imagePath';
@@ -17,26 +17,28 @@ const Details: FC<DetailsRouteProp> = ({navigation, route}) => {
   console.log(`came :${JSON.stringify(`${ImagUri}`)}`);
   return (
     <ScrollView style={styles(color).container}>
-      <FastImage
-        style={styles(color).imgContainer}
-        resizeMode="stretch"
-        source={{
-          uri: `${imagePath}${movie?.poster_path}`,
-        }}>
-        <Ionicons
-          name="caret-back"
-          size={35}
-          color={getColor().darkBlue}
-          onPress={() => navigation.goBack()}
-          style={styles(color).icn}
-        />
+      <SafeAreaView>
         <FastImage
-          style={styles(color).img}
+          style={styles(color).imgContainer}
+          resizeMode="stretch"
           source={{
-            uri: `${imagePath}${movie?.backdrop_path}`,
-          }}
-        />
-      </FastImage>
+            uri: `${imagePath}${movie?.poster_path}`,
+          }}>
+          <Ionicons
+            name="caret-back"
+            size={35}
+            color={getColor().darkBlue}
+            onPress={() => navigation.goBack()}
+            style={styles(color).icn}
+          />
+          <FastImage
+            style={styles(color).img}
+            source={{
+              uri: `${imagePath}${movie?.backdrop_path}`,
+            }}
+          />
+        </FastImage>
+      </SafeAreaView>
       <Text style={styles(color).titleTxt}>
         {`${movie.original_title}  (${movie.release_date?.split('-')?.[0]})`}
       </Text>

@@ -13,6 +13,7 @@ import getColor from '@theme/getColor';
 import imagePath from '@constants/imagePath';
 import Star from '@components/atoms/Star';
 import {movieInfo} from 'src/types/movie.type';
+import FastImage from 'react-native-fast-image';
 
 const Card: FC<{results: card; pressMovie: (item: movieInfo) => void}> = ({
   results,
@@ -25,7 +26,7 @@ const Card: FC<{results: card; pressMovie: (item: movieInfo) => void}> = ({
         style={styles(color).container}
         onPress={() => pressMovie(item)}>
         <View style={{flexDirection: 'row'}}>
-          <Image
+          <FastImage
             style={styles(color).img}
             source={{
               uri: `${imagePath}${item?.backdrop_path}`,

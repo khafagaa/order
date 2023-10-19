@@ -40,8 +40,9 @@ const styles = (color: colors) =>
       alignSelf: 'flex-start',
       margin: calcWidth(14),
       backgroundColor: color.shadow,
-      borderRadius: 20,
+      borderRadius: 15,
       justifyContent: 'center',
+      overflow: 'hidden',
     },
     star: {marginLeft: 20},
     overTxt: {
