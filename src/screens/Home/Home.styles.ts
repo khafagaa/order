@@ -1,4 +1,5 @@
 import getColor from '@theme/getColor';
+import {calcFont, calcWidth} from '@utils/responsive-helper.service';
 import {StyleSheet} from 'react-native';
 import {colors} from 'src/types/color.type';
 
@@ -21,6 +22,12 @@ const styles = (color: colors) =>
       elevation: 4,
       shadowColor: 'white',
       backgroundColor: color.primary,
+    },
+    txt: {
+      color: color.white,
+      fontWeight: 'bold',
+      fontSize: calcFont(25),
+      margin: calcWidth(25),
     },
   });
 
