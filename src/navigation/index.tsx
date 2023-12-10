@@ -13,6 +13,9 @@ import {
 } from 'src/types/navigation.type';
 import {RouteConfig, StackNavigationState} from '@react-navigation/native';
 import Toast from 'react-native-toast-message';
+import Toster from '../../Toster';
+import AppLoader from '@components/organisms/Loader';
+import {AppLoaderRef} from '@components/organisms/Loader/ShowLoader';
 
 export default function Navigation() {
   const loading = useSelector(state => state.loading.loading);
@@ -48,8 +51,7 @@ export default function Navigation() {
           <Stack.Screen key={stackRoute.name} {...stackRoute} />
         ))}
       </Stack.Navigator>
-      <Toast />
-      {loading && <LoadingPage />}
+      {/* {loading && <LoadingPage />} */}
     </>
   );
 }

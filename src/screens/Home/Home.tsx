@@ -1,4 +1,4 @@
-import {View, SafeAreaView, Text, Button} from 'react-native';
+import {View, SafeAreaView, Text, Button, ToastAndroid} from 'react-native';
 import React, {useContext, useState} from 'react';
 import getColor from '@theme/getColor';
 import {useAppDispatch, useAppSelector} from '@hooks/useRedux';
@@ -14,6 +14,9 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from 'src/types/navigation.type';
 import {addHistory} from '@redux/Historymovies/history.reducer';
+import {accessLoading} from '@redux/Loading/loading.reducer';
+import Toster from '../../../Toster';
+import {ShowLoader} from '@components/organisms/Loader/ShowLoader';
 const Home = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -23,7 +26,14 @@ const Home = () => {
     dispatch(addHistory(item));
     navigation.navigate('Details', {movie: item});
   };
+  Toster({timer: 2});
 
+  const setLoading = () => {
+    ShowLoader({toggle: true});
+    setTimeout(() => {
+      ShowLoader({toggle: false});
+    }, 5000);
+  };
   return (
     <SafeAreaView style={styles(getColor()).container}>
       {(isLoading || isFetching) && <LoadingPage />}
@@ -39,10 +49,15 @@ const Home = () => {
             name="history"
             size={30}
             color={getColor().white}
-            onPress={() => navigation.navigate('History')}
+            onPress={setLoading}
             style={{alignSelf: 'center'}}
           />
-          <Text style={{color: getColor().white}}>View History</Text>
+          <Text
+            style={{color: getColor().white}}
+            onPress={() => ShowLoader({toggle: false})}>
+            View History
+          </Text>
+          {/* {obj.show()} */}
         </View>
       </View>
 

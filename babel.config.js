@@ -26,9 +26,9 @@ module.exports = {
           '@shared': './src/shared',
           '@components': './src/components',
           '@utils': './src/utils',
-          // '@src/*': ['./src/*'],
         },
       },
     ],
+    'react-native-reanimated/plugin',
   ],
 };
