@@ -1,8 +1,7 @@
 name: iOS starter workflow
 
 on:
-  push:
-    branches: [ "main" ]
+
   pull_request:
     branches: [ "main" ]
 
@@ -13,14 +12,21 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-      - name: Set Default Scheme
-        run: |
-          scheme_list=$(xcodebuild -list -json | tr -d "\n")
-          default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
-          echo $default | cat >default
-          echo Using default scheme: $default
-      - name: Build
+        uses: actions/checkout@v4
+    
+      
+      - name: "Download Provisioning Profiles"
+        id: provisioning
+        uses: apple-actions/download-provisioning-profiles@v1
+
+        - name: "Download Ad Hoc Provisioning Profiles"
+        id: provisioning-adhoc
+        uses: apple-actions/download-provisioning-profiles@v1
+
+        - name: "Download Development Provisioning Profiles"
+        id: provisioning-dev
+        uses: apple-actions/download-provisioning-profiles@v1
+        
         env:
           scheme: ${{ 'default' }}
           platform: ${{ 'iOS Simulator' }}
