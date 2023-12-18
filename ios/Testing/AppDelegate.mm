@@ -14,7 +14,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   [AppCenterReactNativeShared setStartAutomatically:YES];
-  [AppCenterReactNativeShared setAppSecret:@"{Your App Secret}"];
+  [AppCenterReactNativeShared setAppSecret:@"7b8424b6-4074-436d-b295-b17e860d630a"];
   [AppCenterReactNative register];
   [AppCenterReactNativeAnalytics registerWithInitiallyEnabled:true];
   [AppCenterReactNativeCrashes registerWithAutomaticProcessing];
