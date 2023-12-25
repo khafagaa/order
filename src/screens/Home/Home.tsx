@@ -14,7 +14,14 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from 'src/types/navigation.type';
 import {addHistory} from '@redux/Historymovies/history.reducer';
+import {useFeatureFlag} from 'configcat-react';
 const Home = () => {
+  const {value: isAwesomeFeatureEnabled, loading} = useFeatureFlag(
+    'historyflag',
+    false,
+  );
+
+  console.log(`let check feature flag ${isAwesomeFeatureEnabled}`);
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const dispatch = useAppDispatch();
@@ -34,16 +41,18 @@ const Home = () => {
           marginTop: 10,
         }}>
         <ThemeToggle />
-        {/* <View>
-          <Octicons
-            name="history"
-            size={30}
-            color={getColor().white}
-            onPress={() => navigation.navigate('History')}
-            style={{alignSelf: 'center'}}
-          />
-          <Text style={{color: getColor().white}}>View History</Text>
-        </View> */}
+        {isAwesomeFeatureEnabled && (
+          <View>
+            <Octicons
+              name="history"
+              size={30}
+              color={getColor().white}
+              onPress={() => navigation.navigate('History')}
+              style={{alignSelf: 'center'}}
+            />
+            <Text style={{color: getColor().white}}>View History</Text>
+          </View>
+        )}
       </View>
 
       <View style={styles(getColor()).line} />
