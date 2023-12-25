@@ -3,3 +3,4 @@
 -- Config Cat
 -- post version
 -- Husky
+-- JSDoc

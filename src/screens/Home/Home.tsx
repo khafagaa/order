@@ -1,20 +1,20 @@
-import {View, SafeAreaView, Text, Button} from 'react-native';
-import React, {useContext, useState} from 'react';
-import getColor from '@theme/getColor';
-import {useAppDispatch, useAppSelector} from '@hooks/useRedux';
-import LoadingPage from '@screens/LoadingPage/LoadingPage';
-import {useGetMovies} from '@hooks/useGetMovies';
-import Octicons from 'react-native-vector-icons/Octicons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import styles from './Home.styles';
 import ThemeToggle from '@components/atoms/ThemeToggle';
 import Card from '@components/molecules/Card/Card';
-import {movieInfo} from 'src/types/movie.type';
+import {useGetMovies} from '@hooks/useGetMovies';
+import {useAppDispatch} from '@hooks/useRedux';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from 'src/types/navigation.type';
 import {addHistory} from '@redux/Historymovies/history.reducer';
+import LoadingPage from '@screens/LoadingPage/LoadingPage';
+import getColor from '@theme/getColor';
 import {useFeatureFlag} from 'configcat-react';
+import React from 'react';
+import {SafeAreaView, Text, View} from 'react-native';
+import Octicons from 'react-native-vector-icons/Octicons';
+import {movieInfo} from 'src/types/movie.type';
+import {RootStackParamList} from 'src/types/navigation.type';
+import Footer from './Footer';
+import styles from './Home.styles';
 const Home = () => {
   const {value: isAwesomeFeatureEnabled, loading} = useFeatureFlag(
     'historyflag',
@@ -26,9 +26,10 @@ const Home = () => {
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const dispatch = useAppDispatch();
   const {data, isFetching, isLoading, refetch} = useGetMovies();
+
   const pressMovie = (item: movieInfo) => {
     dispatch(addHistory(item));
-    navigation.navigate('Details', {movie: item});
+    navigation.navigate('Details', {item});
   };
 
   return (
@@ -59,20 +60,7 @@ const Home = () => {
       {data?.results?.length ? (
         <Card results={data?.results} pressMovie={pressMovie} />
       ) : (
-        <View style={{alignSelf: 'center', flex: 1, justifyContent: 'center'}}>
-          <Text style={styles(getColor()).txt}>refetch data</Text>
-          <Ionicons
-            name="reload-circle"
-            size={50}
-            color={getColor().white}
-            onPress={() => refetch()}
-            style={{alignSelf: 'center'}}
-          />
-          <Button
-            color={getColor().txt}
-            title="press me"
-            onPress={() => refetch()}></Button>
-        </View>
+        <Footer {...{refetch}} />
       )}
     </SafeAreaView>
   );
