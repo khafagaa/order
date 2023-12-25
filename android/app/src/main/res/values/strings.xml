@@ -1,10 +1,8 @@
 <resources>
     <string name="app_name">Testing</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">yDTSOeTMJUw-ptD-ku0xdTJ1TIoUWqAJjkp-F</string>
     <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true" translatable="false">
         DO_NOT_ASK_JAVASCRIPT</string>
     <string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true" translatable="false">
         ALWAYS_SEND</string>
-    <string moduleConfig="true" name="CodePushDeploymentKey">yDTSOeTMJUw-ptD-ku0xdTJ1TIoUWqAJjkp-F</string>
-    <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true" translatable="false">DO_NOT_ASK_JAVASCRIPT</string>
-    <string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true" translatable="false">ALWAYS_SEND</string>
 </resources>
