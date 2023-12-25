@@ -34,7 +34,7 @@ const Home = () => {
           marginTop: 10,
         }}>
         <ThemeToggle />
-        {/* <View>
+        <View>
           <Octicons
             name="history"
             size={30}
@@ -43,7 +43,7 @@ const Home = () => {
             style={{alignSelf: 'center'}}
           />
           <Text style={{color: getColor().white}}>View History</Text>
-        </View> */}
+        </View>
       </View>
 
       <View style={styles(getColor()).line} />
